@@ -1,23 +1,51 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Prebuilt Auth Login</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCNF23Pimut_RGVqpyDxmrnzkMG_gpRpcw",
+        authDomain: "pagepenguin-af269.firebaseapp.com",
+        projectId: "pagepenguin-af269",
+        storageBucket: "pagepenguin-af269.appspot.com",
+        messagingSenderId: "718535991458",
+        appId: "1:718535991458:web:0da5b9b1c0cf7ce65f77fb",
+        measurementId: "G-24FQJD1WWX"
+      };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var auth = firebase.auth();
+    </script>
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: '/success',
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      tosUrl: '/tos',
+      privacyPolicyUrl: function() {
+        window.location.assign('/policy');
+      }
+    };
+
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
 </head>
-
 <body>
-  Hello world
-  <script src="script.js"></script>
+    <h1>Firebase Prebuilt Auth Login</h1>
 
-  <!--
-  This script places a badge on your repl's full-browser view back to your repl's cover
-  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
-  teal, blue, blurple, magenta, pink!
-  -->
-  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+  <div id="firebaseui-auth-container"></div>
+
 </body>
-
 </html>
