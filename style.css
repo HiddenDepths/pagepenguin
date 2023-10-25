@@ -1,4 +1,84 @@
-html {
+:root {
+  --bg: #0b2434;
+  --bg-light: #113147;
+  --dark: #1a445f;
+  --light: #3478a9;
+}
+
+* {
+  margin: 0;
+  color: white;
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+html,
+body,
+.flow {
   height: 100%;
   width: 100%;
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  flex-direction: column;
+}
+
+.flow .logo {
+  width: 300px;
+}
+
+#firebaseui {
+  box-sizing: border-box;
+  width: 500px;
+  padding: 40px;
+  background: var(--bg-light);
+  border-radius: 60px;
+  margin: 20px;
+  max-width: calc(100% - 40px)
+}
+
+#firebaseui h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  padding-bottom: 20px;
+}
+
+#firebaseui input,
+#firebaseui button {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  border-radius: 2.6rem;
+  border: none;
+  margin: 5px 0 10px 0;
+}
+
+#firebaseui label {
+  padding-left: 10px;
+}
+
+#firebaseui input {
+  background: white;
+  color: black;
+}
+
+#firebaseui button {
+  background: var(--light);
+  text-align: center;
+}
+
+#firebaseui ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  padding: 0;
+  width: 100%;
+}
+
+#firebaseui p {
+  text-align: center;
 }

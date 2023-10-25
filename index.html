@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase Prebuilt Auth Login</title>
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pagepenguin</title>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+  <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" /> -->
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script src="/script.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNF23Pimut_RGVqpyDxmrnzkMG_gpRpcw",
+      authDomain: "pagepenguin-af269.firebaseapp.com",
+      projectId: "pagepenguin-af269",
+      storageBucket: "pagepenguin-af269.appspot.com",
+      messagingSenderId: "718535991458",
+      appId: "1:718535991458:web:0da5b9b1c0cf7ce65f77fb",
+      measurementId: "G-24FQJD1WWX"
+    };
 
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyCNF23Pimut_RGVqpyDxmrnzkMG_gpRpcw",
-        authDomain: "pagepenguin-af269.firebaseapp.com",
-        projectId: "pagepenguin-af269",
-        storageBucket: "pagepenguin-af269.appspot.com",
-        messagingSenderId: "718535991458",
-        appId: "1:718535991458:web:0da5b9b1c0cf7ce65f77fb",
-        measurementId: "G-24FQJD1WWX"
-      };
+    firebase.initializeApp(firebaseConfig);
 
-        firebase.initializeApp(firebaseConfig);
-
-        var auth = firebase.auth();
-    </script>
+    var auth = firebase.auth();
+  </script>
   <script type="text/javascript">
     // FirebaseUI config.
     var uiConfig = {
-      signInSuccessUrl: '/success',
+      signInSuccessUrl: '/',
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID
       ],
       tosUrl: '/tos',
-      privacyPolicyUrl: function() {
+      privacyPolicyUrl: function () {
         window.location.assign('/policy');
       }
     };
 
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    ui.start('#firebaseui-auth-container', uiConfig);
+    ui.start('#firebaseui', uiConfig);
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        initDash(user)
+        // user.getIdToken().then(function (idToken) {
+        //   console.log("TOKEN:")
+        //   console.log(idToken)
+        // });
+      }
+    });
   </script>
 </head>
+
 <body>
-    <h1>Firebase Prebuilt Auth Login</h1>
-
-  <div id="firebaseui-auth-container"></div>
-
+  <section class="flow">
+    <img class="logo" src="/assets/logo-full.svg" alt="pagepenguin">
+    <div id="firebaseui"></div>
+  </section>
 </body>
+
 </html>
