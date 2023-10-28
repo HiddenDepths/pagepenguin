@@ -13,31 +13,42 @@
 
 html,
 body,
-.flow {
+.flow,
+.dash-container {
   height: 100%;
   width: 100%;
 }
 
-.flow {
+.flow,
+.dash-container {
   display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.flow {
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  flex-direction: column;
+}
+
+.dash-container {
+  display: none;
 }
 
 .flow .logo {
-  width: 300px;
+  width: 400px;
+  padding-bottom: 20px;
+  max-width: calc(100% - 80px);
 }
 
 #firebaseui {
   box-sizing: border-box;
   width: 500px;
-  padding: 40px;
+  padding: 40px 30px;
   background: var(--bg-light);
   border-radius: 60px;
-  margin: 20px;
-  max-width: calc(100% - 40px)
+  margin: 10px;
+  max-width: calc(100% - 20px)
 }
 
 #firebaseui h1 {
@@ -64,14 +75,20 @@ body,
 #firebaseui input {
   background: white;
   color: black;
+  outline: none;
 }
 
 #firebaseui button {
   background: var(--light);
   text-align: center;
+  cursor: pointer;
 }
 
-#firebaseui ul {
+#firebaseui button.firebaseui-id-secondary-link {
+  background: var(--dark);
+}
+
+#firebaseui ul.firebaseui-tos-list {
   display: flex;
   list-style-type: none;
   justify-content: space-around;
@@ -79,6 +96,119 @@ body,
   width: 100%;
 }
 
-#firebaseui p {
+#firebaseui p,
+h2 {
   text-align: center;
+}
+
+#firebaseui .firebaseui-idp-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#firebaseui .firebaseui-idp-icon {
+  height: 1.3rem;
+}
+
+#firebaseui .firebaseui-idp-text-short {
+  display: none;
+}
+
+#firebaseui .firebaseui-idp-text-long {
+  padding-left: 10px;
+}
+
+#firebaseui [data-provider-id="google.com"] .firebaseui-idp-text-long {
+  color: black;
+}
+
+#firebaseui span.firebaseui-idp-icon-wrapper {
+  vertical-align: middle;
+}
+
+.dash-container nav.top {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  background: var(--bg-light);
+  height: 80px;
+  overflow: hidden;
+}
+
+#logout {
+  flex: 1;
+  text-align: right;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.dash {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto
+}
+
+.dash h2 {
+  padding: 20px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+h3.no-sites {
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+.site-cards {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-card {
+  width: 400px;
+  max-width: calc(100% - 40px);
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  aspect-ratio: 3/2;
+  background-color: var(--light);
+  border-radius: 30px;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.5rem;
+  background-position: center !important;
+  background-size: cover !important;
+  transition: 0.5s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+.site-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--bg-light) 100%)
+}
+
+.site-card h3 {
+  z-index: 1;
 }
