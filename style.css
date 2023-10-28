@@ -181,7 +181,7 @@ h3.no-sites {
   padding: 20px;
   box-sizing: border-box;
   aspect-ratio: 3/2;
-  background-color: var(--light);
+  background-color: var(--light) !important;
   border-radius: 30px;
   display: flex;
   align-items: flex-end;

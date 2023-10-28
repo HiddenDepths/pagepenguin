@@ -30,6 +30,9 @@ async function initDash(userData) {
       siteCard.innerHTML = `
         <h3>${x}</h3>
       `
+      siteCard.addEventListener("click", function(event) {
+        console.log(event.target)
+      })
       dash.querySelector(".site-cards").appendChild(siteCard)
     }
   } catch {
